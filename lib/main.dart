@@ -14,10 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'UMKM Store',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: const RoleSelector(),
     );
   }
@@ -46,11 +43,7 @@ class RoleSelector extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.storefront,
-              size: 90,
-              color: Color(0xFF1976D2),
-            ),
+            const Icon(Icons.storefront, size: 90, color: Color(0xFF1976D2)),
 
             const SizedBox(height: 15),
 
@@ -68,10 +61,7 @@ class RoleSelector extends StatelessWidget {
 
             const Text(
               "Pilih peran untuk masuk",
-              style: TextStyle(
-                color: Color(0xFF546E7A),
-                fontSize: 14,
-              ),
+              style: TextStyle(color: Color(0xFF546E7A), fontSize: 14),
             ),
 
             const SizedBox(height: 40),
@@ -87,9 +77,7 @@ class RoleSelector extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (_) => const LoginAdmin(),
-                  ),
+                  MaterialPageRoute(builder: (_) => const LoginAdmin()),
                 );
               },
             ),
@@ -107,9 +95,7 @@ class RoleSelector extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (_) => const LoginCustomer(),
-                  ),
+                  MaterialPageRoute(builder: (_) => const LoginCustomer()),
                 );
               },
             ),
@@ -152,11 +138,7 @@ class RoleSelector extends StatelessWidget {
               CircleAvatar(
                 radius: 28,
                 backgroundColor: iconColor.withOpacity(0.12),
-                child: Icon(
-                  icon,
-                  color: iconColor,
-                  size: 30,
-                ),
+                child: Icon(icon, color: iconColor, size: 30),
               ),
 
               const SizedBox(width: 16),
@@ -178,9 +160,7 @@ class RoleSelector extends StatelessWidget {
 
                     Text(
                       subtitle,
-                      style: const TextStyle(
-                        color: Color(0xFF607D8B),
-                      ),
+                      style: const TextStyle(color: Color(0xFF607D8B)),
                     ),
                   ],
                 ),

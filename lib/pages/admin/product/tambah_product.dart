@@ -25,20 +25,29 @@ class _TambahProductState extends State<TambahProduct> {
     setState(() => loading = true);
 
     try {
-      final result = await ApiService.postData("insertProduct", {
+      final payload = {
         "nama_product": nama.text.trim(),
         "kategori": kategori.text.trim(),
         "harga": harga.text.trim(),
         "stok": stok.text.trim(),
         "deskripsi": deskripsi.text.trim(),
         "gambar": gambar.text.trim(),
-      });
+      };
+
+      // Jika admin memasukkan ID secara manual, sertakan ke payload
+      final idText = idProduct.text.trim();
+      if (idText.isNotEmpty && idText != "Menunggu ID dari database...") {
+        payload['id_product'] = idText;
+      }
+
+      final result = await ApiService.postData("insertProduct", payload);
 
       if (!mounted) return;
       setState(() => loading = false);
 
       if (result['status'] == true) {
-        final generatedId = result['id_product'] ??
+        final generatedId =
+            result['id_product'] ??
             (result['data'] is Map ? result['data']['id_product'] : null) ??
             (result['data'] is Map ? result['data']['id'] : null);
 
@@ -67,9 +76,9 @@ class _TambahProductState extends State<TambahProduct> {
     } catch (e) {
       if (!mounted) return;
       setState(() => loading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error: $e')));
     }
   }
 
@@ -80,6 +89,10 @@ class _TambahProductState extends State<TambahProduct> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          CustomTextField(
+            controller: idProduct,
+            label: "ID Produk (kosong = auto)",
+          ),
           CustomTextField(controller: nama, label: "Nama Produk"),
           CustomTextField(controller: kategori, label: "Kategori"),
           CustomTextField(controller: harga, label: "Harga"),

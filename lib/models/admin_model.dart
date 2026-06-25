@@ -18,8 +18,8 @@ class AdminModel {
   }
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "username": username,
-        "password": password,
-      };
+    "id": id,
+    "username": username,
+    "password": password,
+  };
 }

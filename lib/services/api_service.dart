@@ -19,13 +19,12 @@ class ApiService {
   /// POST data berdasarkan action, contoh:
   /// ApiService.postData("insertProduct", {"nama": "...", "harga": 1000})
   static Future<Map<String, dynamic>> postData(
-      String action, Map<String, dynamic> payload) async {
+    String action,
+    Map<String, dynamic> payload,
+  ) async {
     final url = Uri.parse(Api.baseUrl);
 
-    final body = {
-      "action": action,
-      ...payload,
-    };
+    final body = {"action": action, ...payload};
 
     final response = await http.post(
       url,

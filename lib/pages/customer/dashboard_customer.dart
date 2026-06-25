@@ -9,10 +9,7 @@ import 'login_customer.dart';
 class DashboardCustomer extends StatelessWidget {
   final CustomerModel customer;
 
-  const DashboardCustomer({
-    super.key,
-    required this.customer,
-  });
+  const DashboardCustomer({super.key, required this.customer});
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +22,15 @@ class DashboardCustomer extends StatelessWidget {
         backgroundColor: const Color(0xFFB3E5FC),
         title: const Text(
           "Dashboard Customer",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
         ),
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.black87,
-            ),
+            icon: const Icon(Icons.logout, color: Colors.black87),
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => const LoginCustomer(),
-                ),
+                MaterialPageRoute(builder: (_) => const LoginCustomer()),
                 (route) => false,
               );
             },
@@ -52,21 +41,13 @@ class DashboardCustomer extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             // HEADER
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 30,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Color(0xFFB3E5FC),
-                    Color(0xFFE1F5FE),
-                    Colors.white,
-                  ],
+                  colors: [Color(0xFFB3E5FC), Color(0xFFE1F5FE), Colors.white],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -107,10 +88,7 @@ class DashboardCustomer extends StatelessWidget {
 
                   const Text(
                     "Selamat datang di UMKM Store",
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 14,
-                    ),
+                    style: TextStyle(color: Colors.black54, fontSize: 14),
                   ),
                 ],
               ),
@@ -122,7 +100,6 @@ class DashboardCustomer extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-
                   _menuCard(
                     context,
                     title: "Lihat Produk",
@@ -134,9 +111,7 @@ class DashboardCustomer extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) =>
-                              ProductListCustomer(
-                            customer: customer,
-                          ),
+                              ProductListCustomer(customer: customer),
                         ),
                       );
                     },
@@ -152,10 +127,7 @@ class DashboardCustomer extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) =>
-                              KeranjangPage(
-                            customer: customer,
-                          ),
+                          builder: (_) => KeranjangPage(customer: customer),
                         ),
                       );
                     },
@@ -171,10 +143,7 @@ class DashboardCustomer extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) =>
-                              PesananPage(
-                            customer: customer,
-                          ),
+                          builder: (_) => PesananPage(customer: customer),
                         ),
                       );
                     },
@@ -190,8 +159,7 @@ class DashboardCustomer extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) =>
-                              const TransaksiPage(),
+                          builder: (_) => TransaksiPage(customer: customer),
                         ),
                       );
                     },
@@ -218,9 +186,7 @@ class DashboardCustomer extends StatelessWidget {
       child: Card(
         elevation: 6,
         shadowColor: Colors.black12,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
         child: ListTile(
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
@@ -232,23 +198,14 @@ class DashboardCustomer extends StatelessWidget {
               color: iconColor.withOpacity(0.12),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              icon,
-              color: iconColor,
-              size: 28,
-            ),
+            child: Icon(icon, color: iconColor, size: 28),
           ),
           title: Text(
             title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           subtitle: Text(subtitle),
-          trailing: const Icon(
-            Icons.arrow_forward_ios,
-            size: 18,
-          ),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 18),
           onTap: onTap,
         ),
       ),
